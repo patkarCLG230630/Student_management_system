@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .gradient-custom-2 {
+            /* fallback for old browsers */
+            background: #fccb90;
+
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: -webkit-linear-gradient(to right, #24a0ee, #368cd8, #3668dd, #5945b4);
+
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: linear-gradient(to right, #24a0ee, #368cd8, #3668dd, #5945b4);
+        }
+
+        @media (min-width: 768px) {
+            .gradient-form {
+                height: 100vh !important;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .gradient-custom-2 {
+                border-top-right-radius: .3rem;
+                border-bottom-right-radius: .3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="h-100 gradient-form" style="background-color: #eee;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-xl-10">
+                    <div class="card rounded-3 text-black">
+                        <div class="row g-0">
+
+                            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                                    <div class="text-center">
+                                        <img src="{% static 'assets/img/patkar_logo.jpg' %}" alt="Logo">
+                                    </div>
+                                    <div class="text-center"><br>
+                                        <h2 class="mb-5">Chikitsak Samuha's</h2>
+                                        <h4 class="mb-4">Sir Sitaram and Lady Shantabai Patkar College</h3>
+                                        <h4 class="mb-4">of Arts and Science and </h3>
+                                        <h4 class="mb-4">V.P Varde College of Commerce & Economics</h3>
+                                        <h6 class="mb-4">S.V. Road, Goregaon (West),<br> Mumbai-400 104</h2>
+                                    </div>
+                                    <div class="alert alert-primary" role="alert">
+                                        Note: User name and password will be sent to above mobile number and email is.
+                                        Please provide valid mobile number and email id, as it will be used for future
+                                        communication also.
+                                      </div> 
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="card-body p-md-5 mx-md-1">
+
+                                    <div class="text-center">
+                                        <img src="{% static 'assets/img/patkar.jpg' %}" alt="Logo" height="60px"
+                                            width="300px">
+                                        <h2 class="text- center">Registration Page</h2><br>
+
+                                    </div>
+                                    {% if messages %}
+                                    {% for msg in messages %}
+                                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                        <strong>Hey!!</strong>{{msg}}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
+
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <span>(Please fill correct information and then click on register button.
+                                            All fields are compulsary.)</span><br><br>
+
+                                        <div class="form-outline mb-2">
+                                            <label class="form-label" for="last_name">Last Name</label>
+                                            <input type="text" id="last_name" class="form-control"
+                                                placeholder="Enter Last Name" name="last_name" />
+                                        </div>
+
+                                        <div class="form-outline mb-2">
+                                            <label class="form-label" for="first_name">First Name</label>
+                                            <input type="text" id="first_name" class="form-control"
+                                                placeholder="Enter First Name" name="first_name" />
+                                        </div>
+
+                                        <div class="form-outline mb-2">
+                                            <label class="form-label" for="middle_name">Middle Name</label>
+                                            <input type="text" id="middle_name" class="form-control"
+                                                placeholder="Enter Middle Name" name="middle_name" />
+                                        </div>
+
+                                        <div class="form-outline mb-2">
+                                            <label class="form-label"> Gender : </label>
+                                            <br>&nbsp;&nbsp;&nbsp;
+                                            <input type="radio" name="gender" value="male"> Male&nbsp;&nbsp;&nbsp;
+                                            <input type="radio" name="gender" vlaue="female"> Female&nbsp;&nbsp;&nbsp;
+                                            <input type="radio" name="gender" value="transgender"> Transgender&nbsp;&nbsp;&nbsp;
+                                        </div>
+
+                                        <div class="form-outline mb-2">
+                                            <label class="form-label">Date Of Birth:</label>
+                                            <input type="date" id="dob" class="form-control"
+                                                placeholder="Enter passaword" name="dob" />
+                                        </div>
+
+                                        <div class="form-outline mb-2">
+                                            <label class="form-label" >Mobile Number:</label>
+                                            <input type="text" id="mobile_no" class="form-control"
+                                                placeholder="Enter Mobile" name="mobile_no" />
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label">Email ID:</label>
+                                            <input type="email" id="email" class="form-control"
+                                                placeholder="Enter Email Id" name="email" />
+                                        </div>
+
+                                        <div class="text-center pt-1 mb-1">
+                                            <input class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-1" type="submit" value="Submit">
+                                            <a href="{% url 'login' %}" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-1">Login</a>    
+                                        </div>                                                                               
+                                        </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
